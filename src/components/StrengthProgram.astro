@@ -1,0 +1,456 @@
+
+---
+const workouts = [
+  {
+    day: "Monday",
+    title: "Spine, back and lower body",
+    exercises: [
+      {
+        name: "Squat Reach",
+        sets: "3 × 10",
+        image: "https://i.garagegymreviews.com/353/180/605/2/squat-reach-with-plate.animated.webp",
+      },
+      {
+        name: "Dumbbell Romanian deadlift (single leg)",
+        sets: "3 × 10",
+        link: "https://musclewiki.com/exercise/single-legged-romanian-deadlifts",
+      },
+      {
+        name: "Mikolo row",
+        sets: "3 × 10",
+      },
+      {
+        name: "Standing shoulder press",
+        sets: "3 × 10",
+        link: "https://www.garagegymreviews.com/weight-plate-exercises",
+      },
+      {
+        name: "Bird dog",
+        sets: "2 × 8 each side",
+        link: "https://musclewiki.com/exercise/bird-dog",
+      },
+      {
+        name: "Overhead lunge",
+        sets: "3 × 12",
+        image: "https://i.garagegymreviews.com/129/520/638/1/overhead-plate-lunge.animated.webp",
+      },
+    ],
+  },
+  {
+    day: "Wednesday",
+    title: "Upper-body muscle building",
+    exercises: [
+      {
+        name: "Mikolo row, alternate grip",
+        sets: "3 × 10",
+      },
+      {
+        name: "Dumbbell floor press",
+        sets: "3 × 10",
+        link: "https://musclewiki.com/exercise/dumbbell-floor-press",
+      },
+      {
+        name: "Plate row",
+        sets: "3 × 12",
+        image: "https://www.strongfitnessmag.com/wp-content/uploads/2014/08/BentOverRow1.jpg",
+      },
+      {
+        name: "Dumbbell lateral raise",
+        sets: "3 × 12",
+        link: "https://musclewiki.com/exercise/dumbbell-lateral-raise",
+      },
+      {
+        name: "Biceps curls",
+        sets: "3 × 12",
+        image: "https://www.strongfitnessmag.com/wp-content/uploads/2014/08/BicepCurl1.jpg",
+      },
+      {
+        name: "Band triceps extension",
+        sets: "3 × 12",
+        link: "https://julielohre.com/overhead-tricep-extension/",
+      },
+      {
+        name: "Plank up-down",
+        sets: "2 × 8 each side",
+        link: "https://musclewiki.com/exercise/bodyweight-plank-up-down?model=m",
+      },
+    ],
+  },
+  {
+    day: "Friday",
+    title: "Full body and stability",
+    exercises: [
+      {
+        name: "Banded side-to-side walk",
+        sets: "3 × 8 each leg",
+        link: "https://musclewiki.com/exercise/mini-band-walking-side-to-side?model=m",
+      },
+      {
+        name: "Weighted or single-leg glute bridge",
+        sets: "3 × 12",
+        link: "https://musclewiki.com/exercise/single-leg-glute-bridge",
+      },
+      {
+        name: "Split squat",
+        sets: "2 × 10 each leg",
+        image: "https://cdn.oxygenmag.com/wp-content/uploads/2013/05/overhead-weight-plate-split-squat.jpg?width=3840&auto=webp&quality=75&fit=cover",
+      },
+      {
+        name: "Mikolo row",
+        sets: "3 × 10",
+      },
+      {
+        name: "Push-ups",
+        sets: "3 × 8–12",
+      },
+      {
+        name: "Farmer carries",
+        sets: "3 × 30 seconds",
+        link: "https://musclewiki.com/exercise/plate-pinch-grip-farmers-carry",
+      },
+      {
+        name: "Side plank reach",
+        sets: "2 × 20–30 seconds",
+        link: "https://musclewiki.com/exercise/side-plank-reach-through",
+      },
+    ],
+  },
+];
+---
+
+<main class="strength-program">
+  <header class="program-header">
+    <p class="eyebrow">3-DAY STRENGTH TRAINING</p>
+    <h1>Strength Training Program</h1>
+    <p class="subtitle">
+    
+    </p>
+  </header>
+
+  <section class="instructions">
+    <h2>Training instructions</h2>
+    <p>
+      <strong>Use the plates as your weight</strong> for most exercises
+      where 8 lb would be too light.
+    </p>
+    <p>
+      <strong>How to pick the weight:</strong> Choose a weight that allows
+      perfect form while leaving approximately 2 repetitions in reserve.
+      For example, if the target is 12 reps, you should initially be able
+      to complete about 10 with good form and have 2 more available.
+    </p>
+    <p>
+      <strong>Progression:</strong> Once you can complete all prescribed
+      repetitions with good form and approximately 2 reps in reserve,
+      increase the weight slightly.
+    </p>
+  </section>
+
+  {workouts.map((workout) => (
+    <section class="workout-section">
+      <div class="section-heading">
+        <div>
+          <p class="day-label">{workout.day}</p>
+          <h2>{workout.title}</h2>
+        </div>
+        <span class="exercise-count">
+          {workout.exercises.length} exercises
+        </span>
+      </div>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Exercise</th>
+              <th>Sets × reps</th>
+              <th>Image / demonstration</th>
+            </tr>
+          </thead>
+          <tbody>
+            {workout.exercises.map((exercise) => (
+              <tr>
+                <td class="exercise-name">{exercise.name}</td>
+                <td class="sets">{exercise.sets}</td>
+                <td class="visual">
+                  {exercise.image ? (
+                    <a
+                      href={exercise.image}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <img
+                        src={exercise.image}
+                        alt={exercise.name}
+                        loading="lazy"
+                      />
+                    </a>
+                  ) : exercise.link ? (
+                    <a
+                      class="demo-link"
+                      href={exercise.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      View exercise demonstration ↗
+                    </a>
+                  ) : (
+                    <span class="no-demo">No image supplied</span>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  ))}
+
+  <footer class="program-footer">
+    <p>Consistency · Progressive overload · Recovery</p>
+  </footer>
+</main>
+
+<style>
+  .strength-program {
+    --ink: #202733;
+    --muted: #687586;
+    --line: #e0e5eb;
+    --soft: #f4f7fa;
+    --accent: #245c85;
+
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 32px 20px 60px;
+    color: var(--ink);
+    font-family: inherit;
+    line-height: 1.55;
+  }
+
+  .program-header {
+    margin-bottom: 30px;
+  }
+
+  .eyebrow,
+  .day-label {
+    color: var(--accent);
+    font-size: 0.75rem;
+    font-weight: 750;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin: 0 0 6px;
+  }
+
+  .program-header h1 {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  .subtitle {
+    color: var(--muted);
+    margin: 8px 0 0;
+  }
+
+  .instructions {
+    background: var(--soft);
+    border-left: 4px solid var(--accent);
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 36px;
+  }
+
+  .instructions h2 {
+    font-size: 1.1rem;
+    margin: 0 0 10px;
+  }
+
+  .instructions p {
+    margin: 8px 0;
+  }
+
+  .workout-section {
+    margin-bottom: 42px;
+  }
+
+  .section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 14px;
+  }
+
+  .section-heading h2 {
+    font-size: 1.4rem;
+    margin: 0;
+  }
+
+  .exercise-count {
+    color: var(--muted);
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
+
+  .table-wrapper {
+    overflow-x: auto;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+  }
+
+  th,
+  td {
+    padding: 14px;
+    border-bottom: 1px solid var(--line);
+    text-align: left;
+    vertical-align: middle;
+  }
+
+  th {
+    background: var(--soft);
+    font-size: 0.85rem;
+    font-weight: 700;
+  }
+
+  th:nth-child(1),
+  td:nth-child(1) {
+    width: 34%;
+  }
+
+  th:nth-child(2),
+  td:nth-child(2) {
+    width: 19%;
+  }
+
+  th:nth-child(3),
+  td:nth-child(3) {
+    width: 47%;
+  }
+
+  tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  tbody tr:hover {
+    background: #fafbfd;
+  }
+
+  .exercise-name {
+    font-weight: 600;
+  }
+
+  .sets {
+    font-size: 0.95rem;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .visual {
+    text-align: center;
+  }
+
+  .visual img {
+    display: block;
+    max-width: 100%;
+    width: auto;
+    max-height: 175px;
+    height: auto;
+    object-fit: contain;
+    margin: 0 auto;
+    border-radius: 6px;
+  }
+
+  .demo-link {
+    display: inline-block;
+    color: var(--accent);
+    border: 1px solid var(--line);
+    border-radius: 7px;
+    padding: 8px 12px;
+    font-size: 0.85rem;
+    font-weight: 650;
+    text-decoration: none;
+  }
+
+  .demo-link:hover {
+    background: var(--soft);
+    text-decoration: underline;
+  }
+
+  .no-demo {
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+
+  .program-footer {
+    border-top: 1px solid var(--line);
+    padding-top: 18px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 650px) {
+    .strength-program {
+      padding: 24px 12px 40px;
+    }
+
+    th,
+    td {
+      padding: 9px;
+      font-size: 0.85rem;
+    }
+
+    th:nth-child(1),
+    td:nth-child(1) {
+      width: 35%;
+    }
+
+    th:nth-child(2),
+    td:nth-child(2) {
+      width: 22%;
+    }
+
+    th:nth-child(3),
+    td:nth-child(3) {
+      width: 43%;
+    }
+
+    .visual img {
+      max-height: 120px;
+    }
+
+    .demo-link {
+      padding: 6px 8px;
+      font-size: 0.75rem;
+    }
+
+    .section-heading h2 {
+      font-size: 1.15rem;
+    }
+  }
+
+  @media print {
+    .strength-program {
+      max-width: none;
+      padding: 0;
+    }
+
+    .workout-section {
+      break-inside: avoid;
+    }
+
+    tr {
+      break-inside: avoid;
+    }
+
+    .demo-link {
+      color: var(--ink);
+    }
+  }
+</style>
